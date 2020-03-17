@@ -11,8 +11,6 @@ data class NotaDevolucaoGarantia(
   val seDevolucao: String,
   val numeroDevolucao: String,
   val dataDevolucao: Date,
-  val prdno: String,
-  val grade: String,
   val nfRetorno: String,
   val seRetorno: String,
   val numeroRetorno: String,

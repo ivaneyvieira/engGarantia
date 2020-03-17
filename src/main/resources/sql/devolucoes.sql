@@ -5,8 +5,6 @@ SELECT N.storeno,
        N.nfse                                                          AS seDevolucao,
        IFNULL(CAST(CONCAT(N.nfno, '/', N.nfse) AS CHAR), '')           AS numeroDevolucao,
        CAST(N.issuedate AS DATE)                                       AS dataDevolucao,
-       I.prdno,
-       I.grade,
        IFNULL(E.nfname, '')                                            AS nfRetorno,
        IFNULL(E.invse, '')                                             AS seRetorno,
        IFNULL(CAST(CONCAT(E.nfname, '/', E.invse) AS CHAR), '')        AS numeroRetorno,
@@ -18,9 +16,9 @@ SELECT N.storeno,
        IFNULL(N.baseIcmsSubst / 100, 0)                                AS baseSt,
        IFNULL(N.icmsSubst / 100, 0)                                    AS valorSt,
        IFNULL(N.ipi_amt / 100, 0)                                      AS valorIpi,
-       IFNULL(I.precoUnitario / 100, 0)                                AS valorProdutos,
+       IFNULL(SUM(I.precoUnitario / 100), 0)                           AS valorProdutos,
        IFNULL(N.grossamt / 100, 0)                                     AS valorNota,
-       P.invno IS NOT NULL                                             AS ProdutoOk
+       SUM(P.invno IS NOT NULL) <> 0                                   AS ProdutoOk
 FROM sqldados.nf             AS N
   INNER JOIN sqldados.xaprd2 AS I
                USING (storeno, pdvno, xano)
@@ -35,4 +33,4 @@ FROM sqldados.nf             AS N
 WHERE N.issuedate >= 20200101
   AND (N.remarks LIKE 'GA%' OR N.remarks LIKE 'G%TIA')
   AND N.tipo = 2
-GROUP BY I.storeno, I.pdvno, I.xano, I.prdno, I.grade
+GROUP BY N.storeno, N.pdvno, N.xano
