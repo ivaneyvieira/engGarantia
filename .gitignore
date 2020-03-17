@@ -21,6 +21,7 @@ src/main/webapp/VAADIN/themes/*/styles.css.gz
 Procfile
 deploy.sh
 .gradle*
+npm*
 ebean.properties
 docker-compose.yml
 execute.sh
