@@ -1,4 +1,4 @@
-package br.com.astrosoft.engGarantia.view
+package br.com.astrosoft.framework.view
 
 import com.github.appreciated.app.layout.addons.notification.DefaultNotificationHolder
 import com.github.appreciated.app.layout.addons.notification.component.NotificationButton

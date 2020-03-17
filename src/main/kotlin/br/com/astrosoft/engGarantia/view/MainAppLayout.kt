@@ -1,5 +1,6 @@
 package br.com.astrosoft.engGarantia.view
 
+import br.com.astrosoft.framework.view.KAppLayoutRouterLayout
 import com.github.appreciated.app.layout.component.applayout.LeftLayouts.LeftResponsiveHybrid
 import com.vaadin.flow.theme.Theme
 import com.vaadin.flow.theme.lumo.Lumo
@@ -7,18 +8,12 @@ import com.vaadin.flow.theme.lumo.Lumo
 @Theme(value = Lumo::class, variant = Lumo.DARK)
 class MainAppLayout: KAppLayoutRouterLayout<LeftResponsiveHybrid>(LeftResponsiveHybrid::class) {
   init {
-    layout("App Layout") {
+    layout("Devolução Garantia") {
       bar()
       menu("Menu", "1.0") {
-        section("Sub Menu") {
-          itemMenu(View3::class)
-          itemMenu(View4::class)
-          itemMenu(View5::class)
-        }
-        
-        section("Sub Menu 2") {
-          itemMenu(View1::class)
-          itemMenu(View2::class)
+        section("Garantia") {
+          itemMenu(ViewDevolucaoFornecedor::class)
+          itemMenu(ViewEditorNota::class)
         }
       }
     }
