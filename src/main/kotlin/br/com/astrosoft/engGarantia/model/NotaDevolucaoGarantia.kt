@@ -15,7 +15,7 @@ data class NotaDevolucaoGarantia(
   val seRetorno: String,
   val numeroRetorno: String,
   val dataRetorno: Date,
-  val fornecedor: String,
+  val cliente: String,
   val cfop: Int,
   val baseIcms: Double,
   val valorIcms: Double,

@@ -56,8 +56,8 @@ abstract class AbstractViewGarantia<VM: AbastractViewModelGarantia>: IViewModelG
         setHeader("Emissão")
         this.setAutoWidth(true)
       }
-      addColumnFor(NotaDevolucaoGarantia::fornecedor) {
-        setHeader("For")
+      addColumnFor(NotaDevolucaoGarantia::cliente) {
+        setHeader("Cliente")
         this.setAutoWidth(true)
       }
       addColumnFor(NotaDevolucaoGarantia::cfop) {
