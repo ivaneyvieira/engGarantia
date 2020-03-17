@@ -24,5 +24,6 @@ deploy.sh
 ebean.properties
 docker-compose.yml
 execute.sh
+logs
 webpack.*
 package*
