@@ -5,7 +5,7 @@ import com.github.appreciated.app.layout.addons.notification.component.Notificat
 import com.github.appreciated.app.layout.addons.notification.entity.DefaultNotification
 import com.github.appreciated.app.layout.component.appbar.AppBarBuilder
 import com.github.appreciated.app.layout.component.applayout.AbstractLeftAppLayoutBase
-import com.github.appreciated.app.layout.component.applayout.AppLayout
+import com.github.appreciated.app.layout.component.applayout.LeftLayouts.LeftResponsiveHybrid
 import com.github.appreciated.app.layout.component.builder.AppLayoutBuilder
 import com.github.appreciated.app.layout.component.menu.left.LeftMenu
 import com.github.appreciated.app.layout.component.menu.left.LeftMenuComponentWrapper
@@ -28,16 +28,16 @@ import kotlin.reflect.KClass
 
 @Push
 @Viewport("width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes")
-open class KAppLayoutRouterLayout<VARIANT: AppLayout>(private val variant: KClass<VARIANT>):
-  AppLayoutRouterLayout<VARIANT?>() {
+open class KAppLayoutLeftLayout():
+  AppLayoutRouterLayout<LeftResponsiveHybrid?>() {
   val notifications = DefaultNotificationHolder().apply {
     this.addClickListener {notification: DefaultNotification? ->
     }
   }
   
   protected fun layout(title: String = "", icon: String = "",
-                       block: (@VaadinDsl AppLayoutBuilder<VARIANT>).  () -> Unit): VARIANT {
-    val appLayoutBuild = AppLayoutBuilder.get(variant.java)
+                       block: (@VaadinDsl AppLayoutBuilder<LeftResponsiveHybrid>).  () -> Unit): LeftResponsiveHybrid {
+    val appLayoutBuild = AppLayoutBuilder.get(LeftResponsiveHybrid::class.java)
     if(title != "")
       appLayoutBuild.withTitle(title)
     if(icon != "")
@@ -53,7 +53,7 @@ open class KAppLayoutRouterLayout<VARIANT: AppLayout>(private val variant: KClas
     return appLayout
   }
   
-  protected fun AppLayoutBuilder<VARIANT>.bar(block: (@VaadinDsl AppBarBuilder).() -> Unit = {}): FlexLayout {
+  protected fun AppLayoutBuilder<LeftResponsiveHybrid>.bar(block: (@VaadinDsl AppBarBuilder).() -> Unit = {}): FlexLayout {
     val appBarBuilder = AppBarBuilder.get()
     appBarBuilder.add(NotificationButton(BELL, notifications))
     
@@ -63,8 +63,8 @@ open class KAppLayoutRouterLayout<VARIANT: AppLayout>(private val variant: KClas
     return appBar
   }
   
-  protected fun AppLayoutBuilder<VARIANT>.menu(title: String = "", version: String = "",
-                                               block: (@VaadinDsl LeftAppMenuBuilder).() -> Unit = {}): LeftMenu {
+  protected fun AppLayoutBuilder<LeftResponsiveHybrid>.menu(title: String = "", version: String = "",
+                                                            block: (@VaadinDsl LeftAppMenuBuilder).() -> Unit = {}): LeftMenu {
     val appMenuBuilder = LeftAppMenuBuilder.get()
     if(title != "")
       appMenuBuilder.addToSection(HEADER, LeftHeaderItem(title, version, null))

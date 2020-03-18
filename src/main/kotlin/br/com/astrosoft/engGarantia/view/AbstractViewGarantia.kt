@@ -4,20 +4,18 @@ import br.com.astrosoft.engGarantia.model.NotaDevolucaoGarantia
 import br.com.astrosoft.engGarantia.viewmodel.AbastractViewModelGarantia
 import br.com.astrosoft.engGarantia.viewmodel.IViewModelGarantia
 import br.com.astrosoft.framework.view.ViewLayout
-import com.github.mvysny.karibudsl.v10.addColumnFor
+import br.com.astrosoft.framework.view.addColumnDate
+import br.com.astrosoft.framework.view.addColumnDouble
+import br.com.astrosoft.framework.view.addColumnInt
+import br.com.astrosoft.framework.view.addColumnString
 import com.github.mvysny.karibudsl.v10.grid
 import com.github.mvysny.karibudsl.v10.isExpand
-import com.vaadin.flow.component.grid.ColumnTextAlign.END
 import com.vaadin.flow.component.grid.Grid
 import com.vaadin.flow.component.grid.Grid.SelectionMode
 import com.vaadin.flow.component.grid.GridVariant.LUMO_COMPACT
 import com.vaadin.flow.data.provider.ListDataProvider
-import com.vaadin.flow.data.renderer.LocalDateRenderer
-import com.vaadin.flow.data.renderer.NumberRenderer
-import java.text.DecimalFormat
 
 abstract class AbstractViewGarantia<VM: AbastractViewModelGarantia>: IViewModelGarantia, ViewLayout<VM>() {
-  private val formatNumber = DecimalFormat("#,##0.00")
   private var gridNotas: Grid<NotaDevolucaoGarantia>
   private val dataProviderProdutos = ListDataProvider<NotaDevolucaoGarantia>(mutableListOf())
   
@@ -33,72 +31,48 @@ abstract class AbstractViewGarantia<VM: AbastractViewModelGarantia>: IViewModelG
       isMultiSort = true
       addThemeVariants(LUMO_COMPACT)
       setSelectionMode(SelectionMode.SINGLE)
-      
-      addColumnFor(NotaDevolucaoGarantia::storeno) {
+  
+      addColumnInt(NotaDevolucaoGarantia::storeno) {
         setHeader("Loja")
-        this.setAutoWidth(true)
       }
-      addColumnFor(NotaDevolucaoGarantia::numeroDevolucao) {
+      addColumnString(NotaDevolucaoGarantia::numeroDevolucao) {
         setHeader("NDF")
-        this.setAutoWidth(true)
       }
-      addColumnFor(NotaDevolucaoGarantia::localDataDevolucao,
-                   LocalDateRenderer(NotaDevolucaoGarantia::localDataDevolucao, "dd/MM/yyyy")) {
+      addColumnDate(NotaDevolucaoGarantia::localDataDevolucao) {
         setHeader("Emissão")
-        this.setAutoWidth(true)
       }
-      addColumnFor(NotaDevolucaoGarantia::numeroRetorno) {
+      addColumnString(NotaDevolucaoGarantia::numeroRetorno) {
         setHeader("Nota Ret")
-        this.setAutoWidth(true)
       }
-      addColumnFor(NotaDevolucaoGarantia::localDataRetorno,
-                   LocalDateRenderer(NotaDevolucaoGarantia::localDataRetorno, "dd/MM/yyyy")) {
+      addColumnDate(NotaDevolucaoGarantia::localDataRetorno) {
         setHeader("Emissão")
-        this.setAutoWidth(true)
       }
-      addColumnFor(NotaDevolucaoGarantia::cliente) {
+      addColumnString(NotaDevolucaoGarantia::cliente) {
         setHeader("Cliente")
-        this.setAutoWidth(true)
       }
-      addColumnFor(NotaDevolucaoGarantia::cfop) {
+      addColumnInt(NotaDevolucaoGarantia::cfop) {
         setHeader("CFOP")
-        this.setAutoWidth(true)
       }
-      addColumnFor(NotaDevolucaoGarantia::baseIcms, NumberRenderer(NotaDevolucaoGarantia::baseIcms, formatNumber)) {
+      addColumnDouble(NotaDevolucaoGarantia::baseIcms) {
         setHeader("Base ICMS")
-        this.textAlign = END
-        this.setAutoWidth(true)
       }
-      addColumnFor(NotaDevolucaoGarantia::valorIcms, NumberRenderer(NotaDevolucaoGarantia::valorIcms, formatNumber)) {
+      addColumnDouble(NotaDevolucaoGarantia::valorIcms) {
         setHeader("Valor ICMS")
-        this.textAlign = END
-        this.setAutoWidth(true)
       }
-      addColumnFor(NotaDevolucaoGarantia::baseSt, NumberRenderer(NotaDevolucaoGarantia::baseSt, formatNumber)) {
+      addColumnDouble(NotaDevolucaoGarantia::baseSt) {
         setHeader("Base ST")
-        this.textAlign = END
-        this.setAutoWidth(true)
       }
-      addColumnFor(NotaDevolucaoGarantia::valorSt, NumberRenderer(NotaDevolucaoGarantia::valorSt, formatNumber)) {
+      addColumnDouble(NotaDevolucaoGarantia::valorSt) {
         setHeader("Valor ST")
-        this.textAlign = END
-        this.setAutoWidth(true)
       }
-      addColumnFor(NotaDevolucaoGarantia::valorIpi, NumberRenderer(NotaDevolucaoGarantia::valorIpi, formatNumber)) {
+      addColumnDouble(NotaDevolucaoGarantia::valorIpi) {
         setHeader("Valor IPI")
-        this.textAlign = END
-        this.setAutoWidth(true)
       }
-      addColumnFor(NotaDevolucaoGarantia::valorProdutos,
-                   NumberRenderer(NotaDevolucaoGarantia::valorProdutos, formatNumber)) {
+      addColumnDouble(NotaDevolucaoGarantia::valorProdutos) {
         setHeader("Valor Produto")
-        this.textAlign = END
-        this.setAutoWidth(true)
       }
-      addColumnFor(NotaDevolucaoGarantia::valorNota, NumberRenderer(NotaDevolucaoGarantia::valorNota, formatNumber)) {
+      addColumnDouble(NotaDevolucaoGarantia::valorNota) {
         setHeader("Valor Nota")
-        this.textAlign = END
-        this.setAutoWidth(true)
       }
     }
   }

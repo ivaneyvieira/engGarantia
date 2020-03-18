@@ -1,12 +1,13 @@
 package br.com.astrosoft.engGarantia.view
 
-import br.com.astrosoft.framework.view.KAppLayoutRouterLayout
-import com.github.appreciated.app.layout.component.applayout.LeftLayouts.LeftResponsiveHybrid
+import br.com.astrosoft.framework.view.KAppLayoutTopLayout
+import com.vaadin.flow.router.BeforeEnterEvent
+import com.vaadin.flow.router.BeforeEnterObserver
 import com.vaadin.flow.theme.Theme
 import com.vaadin.flow.theme.lumo.Lumo
 
 @Theme(value = Lumo::class, variant = Lumo.DARK)
-class MainAppLayout: KAppLayoutRouterLayout<LeftResponsiveHybrid>(LeftResponsiveHybrid::class) {
+class MainAppLayout: KAppLayoutTopLayout(), BeforeEnterObserver {
   init {
     layout("Devolução Garantia") {
       bar()
@@ -17,6 +18,11 @@ class MainAppLayout: KAppLayoutRouterLayout<LeftResponsiveHybrid>(LeftResponsive
         }
       }
     }
+  }
+  
+  override fun beforeEnter(event: BeforeEnterEvent?) {
+    if(event?.navigationTarget == ViewEmpty::class.java)
+      event.forwardTo(ViewDevolucaoFornecedor::class.java)
   }
 }
 

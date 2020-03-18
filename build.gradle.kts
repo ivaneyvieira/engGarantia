@@ -59,6 +59,7 @@ dependencies {
   implementation("org.slf4j:slf4j-api:1.7.30")
   
   implementation(kotlin("stdlib-jdk8"))
+  implementation(kotlin("reflect"))
   // db
   implementation("mysql:mysql-connector-java:5.1.48")
   implementation("org.apache.commons:commons-dbcp2:2.3.0")
