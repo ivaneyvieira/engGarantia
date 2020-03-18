@@ -1,6 +1,7 @@
 package br.com.astrosoft.abastecimento.model
 
 import br.com.astrosoft.engGarantia.model.NotaDevolucaoGarantia
+import br.com.astrosoft.engGarantia.model.PedidoGarantia
 import br.com.astrosoft.framework.model.QueryDB
 import br.com.astrosoft.framework.util.DB
 
@@ -9,6 +10,13 @@ class QuerySaci: QueryDB(driver, url, username, password) {
     val sql = "/sql/devolucoes.sql"
     return query(sql) {q ->
       q.executeAndFetch(NotaDevolucaoGarantia::class.java)
+    }
+  }
+  
+  fun pedidoGarantia(): List<PedidoGarantia> {
+    val sql = "/sql/pedido.sql"
+    return query(sql) {q ->
+      q.executeAndFetch(PedidoGarantia::class.java)
     }
   }
   

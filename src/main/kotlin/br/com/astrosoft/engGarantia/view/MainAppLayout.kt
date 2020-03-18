@@ -12,6 +12,10 @@ class MainAppLayout: KAppLayoutLeftLayout(), BeforeEnterObserver {
     layout("Devolução Garantia") {
       bar()
       menu("Menu", "1.0") {
+        section("Pedido") {
+          itemMenu(ViewPedidoGarantia::class)
+          itemMenu(ViewPedidoEditor::class)
+        }
         section("Garantia") {
           itemMenu(ViewDevolucaoFornecedor::class)
           itemMenu(ViewEditorNota::class)

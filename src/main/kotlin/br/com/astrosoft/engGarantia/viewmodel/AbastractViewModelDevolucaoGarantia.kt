@@ -6,7 +6,7 @@ import br.com.astrosoft.framework.viewmodel.IView
 import br.com.astrosoft.framework.viewmodel.ViewModel
 import kotlin.concurrent.thread
 
-abstract class AbastractViewModelGarantia(view: IViewModelGarantia): ViewModel<IViewModelGarantia>(view) {
+abstract class AbastractViewModelDevolucaoGarantia(view: IViewModelGarantia): ViewModel<IViewModelGarantia>(view) {
   abstract fun itensGrid(): List<NotaDevolucaoGarantia>
   
   fun updateGrid() {

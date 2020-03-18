@@ -1,7 +1,7 @@
 package br.com.astrosoft.engGarantia.view
 
 import br.com.astrosoft.engGarantia.model.NotaDevolucaoGarantia
-import br.com.astrosoft.engGarantia.viewmodel.AbastractViewModelGarantia
+import br.com.astrosoft.engGarantia.viewmodel.AbastractViewModelDevolucaoGarantia
 import br.com.astrosoft.engGarantia.viewmodel.IViewModelGarantia
 import br.com.astrosoft.framework.view.ViewLayout
 import br.com.astrosoft.framework.view.addColumnDate
@@ -15,7 +15,7 @@ import com.vaadin.flow.component.grid.Grid.SelectionMode
 import com.vaadin.flow.component.grid.GridVariant.LUMO_COMPACT
 import com.vaadin.flow.data.provider.ListDataProvider
 
-abstract class AbstractViewGarantia<VM: AbastractViewModelGarantia>: IViewModelGarantia, ViewLayout<VM>() {
+abstract class AbstractViewGarantia<VM: AbastractViewModelDevolucaoGarantia>: IViewModelGarantia, ViewLayout<VM>() {
   private var gridNotas: Grid<NotaDevolucaoGarantia>
   private val dataProviderProdutos = ListDataProvider<NotaDevolucaoGarantia>(mutableListOf())
   
