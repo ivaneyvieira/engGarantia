@@ -12,11 +12,9 @@ import com.github.appreciated.app.layout.component.menu.left.LeftMenuComponentWr
 import com.github.appreciated.app.layout.component.menu.left.LeftSubmenu
 import com.github.appreciated.app.layout.component.menu.left.builder.LeftAppMenuBuilder
 import com.github.appreciated.app.layout.component.menu.left.builder.LeftSubMenuBuilder
-import com.github.appreciated.app.layout.component.menu.left.items.LeftHeaderItem
 import com.github.appreciated.app.layout.component.menu.left.items.LeftNavigationItem
 import com.github.appreciated.app.layout.component.menu.left.items.LeftSectionItem
 import com.github.appreciated.app.layout.component.router.AppLayoutRouterLayout
-import com.github.appreciated.app.layout.entity.Section.HEADER
 import com.github.mvysny.karibudsl.v10.VaadinDsl
 import com.vaadin.flow.component.Component
 import com.vaadin.flow.component.icon.VaadinIcon
@@ -66,9 +64,8 @@ open class KAppLayoutLeftLayout():
   protected fun AppLayoutBuilder<LeftResponsiveHybrid>.menu(title: String = "", version: String = "",
                                                             block: (@VaadinDsl LeftAppMenuBuilder).() -> Unit = {}): LeftMenu {
     val appMenuBuilder = LeftAppMenuBuilder.get()
-    if(title != "")
-      appMenuBuilder.addToSection(HEADER, LeftHeaderItem(title, version, null))
-    
+    //    if(title != "")
+    //      appMenuBuilder.addToSection(HEADER, LeftHeaderItem(title, version, null))
     appMenuBuilder.block()
     val appMenu = appMenuBuilder.build() as LeftMenuComponentWrapper
     withAppMenu(appMenu)

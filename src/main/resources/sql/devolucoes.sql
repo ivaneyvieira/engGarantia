@@ -31,6 +31,6 @@ FROM sqldados.nf             AS N
   LEFT JOIN  sqldados.iprd   AS P
                ON P.invno = E.invno AND P.prdno = I.prdno AND P.grade = I.grade
 WHERE N.issuedate >= 20200101
-  AND (N.remarks LIKE 'GA%' OR N.remarks LIKE 'G%TIA%')
+  AND (N.remarks REGEXP '^GAR[A-Z]+A *I.*')
   AND N.tipo = 2
 GROUP BY N.storeno, N.pdvno, N.xano

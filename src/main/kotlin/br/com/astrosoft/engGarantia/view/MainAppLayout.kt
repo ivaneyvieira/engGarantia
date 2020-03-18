@@ -1,13 +1,13 @@
 package br.com.astrosoft.engGarantia.view
 
-import br.com.astrosoft.framework.view.KAppLayoutTopLayout
+import br.com.astrosoft.framework.view.KAppLayoutLeftLayout
 import com.vaadin.flow.router.BeforeEnterEvent
 import com.vaadin.flow.router.BeforeEnterObserver
 import com.vaadin.flow.theme.Theme
 import com.vaadin.flow.theme.lumo.Lumo
 
 @Theme(value = Lumo::class, variant = Lumo.DARK)
-class MainAppLayout: KAppLayoutTopLayout(), BeforeEnterObserver {
+class MainAppLayout: KAppLayoutLeftLayout(), BeforeEnterObserver {
   init {
     layout("Devolução Garantia") {
       bar()
