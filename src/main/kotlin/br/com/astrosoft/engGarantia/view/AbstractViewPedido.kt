@@ -16,8 +16,8 @@ import com.vaadin.flow.component.grid.GridVariant.LUMO_COMPACT
 import com.vaadin.flow.data.provider.ListDataProvider
 
 abstract class AbstractViewPedido<VM: AbastractViewModelPedidoGarantia>: IViewModelPedido, ViewLayout<VM>() {
-  private var gridNotas: Grid<PedidoGarantia>
-  private val dataProviderProdutos = ListDataProvider<PedidoGarantia>(mutableListOf())
+  protected var gridNotas: Grid<PedidoGarantia>
+  protected val dataProviderProdutos = ListDataProvider<PedidoGarantia>(mutableListOf())
   
   override fun updateGrid(list: List<PedidoGarantia>) {
     dataProviderProdutos.items.clear()
