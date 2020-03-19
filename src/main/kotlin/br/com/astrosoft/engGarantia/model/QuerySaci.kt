@@ -37,6 +37,24 @@ class QuerySaci: QueryDB(driver, url, username, password) {
     }
   }
   
+  fun removePedidoGarantia(loja: Int, numero: Int) {
+    val sql = "/sql/removePedidoGarantia.sql"
+    script(sql) {q ->
+      q.addParameter("loja", loja)
+      q.addParameter("numero", numero)
+      q.executeUpdate()
+    }
+  }
+  
+  fun removePedidoEditor(loja: Int, numero: Int) {
+    val sql = "/sql/removePedidoEditor.sql"
+    script(sql) {q ->
+      q.addParameter("loja", loja)
+      q.addParameter("numero", numero)
+      q.executeUpdate()
+    }
+  }
+  
   companion object {
     private val db = DB("saci")
     internal val driver = db.driver

@@ -36,10 +36,21 @@ class ViewPedidoGarantia: AbstractViewPedido<ViewModelPedidoGarantia>() {
         onLeftClick {
           val pedido = gridNotas.selectedItems?.firstOrNull()
           if(pedido == null)
-            showError("Não há pedido selecioad")
+            showError("Não há pedido selecionado")
           else
             confirmNota(pedido) {numero ->
               viewModel.addNota(pedido, numero)
+            }
+        }
+      }
+      button("Remove") {
+        onLeftClick {
+          val pedido = gridNotas.selectedItems?.firstOrNull()
+          if(pedido == null)
+            showError("Não há pedido selecionado")
+          else
+            showQuestion("O produto será removido dessa lista. Tem certeza?") {
+              viewModel.removePedido(pedido)
             }
         }
       }

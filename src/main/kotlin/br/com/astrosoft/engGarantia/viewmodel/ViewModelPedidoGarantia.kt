@@ -22,4 +22,11 @@ class ViewModelPedidoGarantia(view: IViewModelPedido): AbastractViewModelPedidoG
     saci.addNota(loja, numero, nota)
     updateGrid()
   }
+  
+  fun removePedido(pedido: PedidoGarantia) {
+    val loja = pedido.storeno
+    val numero = pedido.ordno
+    saci.removePedidoGarantia(loja, numero)
+    updateGrid()
+  }
 }
