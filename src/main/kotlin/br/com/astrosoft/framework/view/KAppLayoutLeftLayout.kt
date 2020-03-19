@@ -1,8 +1,5 @@
 package br.com.astrosoft.framework.view
 
-import com.github.appreciated.app.layout.addons.notification.DefaultNotificationHolder
-import com.github.appreciated.app.layout.addons.notification.component.NotificationButton
-import com.github.appreciated.app.layout.addons.notification.entity.DefaultNotification
 import com.github.appreciated.app.layout.component.appbar.AppBarBuilder
 import com.github.appreciated.app.layout.component.applayout.AbstractLeftAppLayoutBase
 import com.github.appreciated.app.layout.component.applayout.LeftLayouts.LeftResponsiveHybrid
@@ -16,9 +13,10 @@ import com.github.appreciated.app.layout.component.menu.left.items.LeftNavigatio
 import com.github.appreciated.app.layout.component.menu.left.items.LeftSectionItem
 import com.github.appreciated.app.layout.component.router.AppLayoutRouterLayout
 import com.github.mvysny.karibudsl.v10.VaadinDsl
+import com.github.mvysny.karibudsl.v10.textAlign
 import com.vaadin.flow.component.Component
+import com.vaadin.flow.component.html.Label
 import com.vaadin.flow.component.icon.VaadinIcon
-import com.vaadin.flow.component.icon.VaadinIcon.BELL
 import com.vaadin.flow.component.orderedlayout.FlexLayout
 import com.vaadin.flow.component.page.Push
 import com.vaadin.flow.component.page.Viewport
@@ -28,11 +26,7 @@ import kotlin.reflect.KClass
 @Viewport("width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes")
 open class KAppLayoutLeftLayout():
   AppLayoutRouterLayout<LeftResponsiveHybrid?>() {
-  val notifications = DefaultNotificationHolder().apply {
-    this.addClickListener {notification: DefaultNotification? ->
-    }
-  }
-  
+
   protected fun layout(title: String = "", icon: String = "",
                        block: (@VaadinDsl AppLayoutBuilder<LeftResponsiveHybrid>).  () -> Unit): LeftResponsiveHybrid {
     val appLayoutBuild = AppLayoutBuilder.get(LeftResponsiveHybrid::class.java)
@@ -53,8 +47,10 @@ open class KAppLayoutLeftLayout():
   
   protected fun AppLayoutBuilder<LeftResponsiveHybrid>.bar(block: (@VaadinDsl AppBarBuilder).() -> Unit = {}): FlexLayout {
     val appBarBuilder = AppBarBuilder.get()
-    appBarBuilder.add(NotificationButton(BELL, notifications))
-    
+    val versao = Label("Versão 1.0")
+    versao.textAlign = "center"
+    appBarBuilder.add(versao)
+  
     appBarBuilder.block()
     val appBar = appBarBuilder.build()
     withAppBar(appBar)
